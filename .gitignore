@@ -27,3 +27,10 @@
 *.exe
 *.out
 *.app
+/ConceptsOfProgramDesign/Debug
+/ConceptsOfProgramDesign/x64/Debug
+/Debug
+/x64/Debug
+/ipch/CONCEPTSOFPROGRAMDESIGN-268f0f1d
+/ConceptsOfProgramDesign.VC.db
+/ConceptsOfProgramDesign.VC.VC.opendb
