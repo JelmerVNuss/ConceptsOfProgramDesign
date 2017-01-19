@@ -6,11 +6,11 @@
                    projectFiles="true">
       <itemPath>CsvParser.hpp</itemPath>
       <itemPath>csv.hpp</itemPath>
-      <itemPath>csv_iterator.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>test.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -54,9 +54,9 @@
       </item>
       <item path="csv.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.csv" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -85,9 +85,9 @@
       </item>
       <item path="csv.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.csv" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
