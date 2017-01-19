@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>CsvParser.hpp</itemPath>
+      <itemPath>csv.hpp</itemPath>
       <itemPath>csv_iterator.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -13,6 +15,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>CsvParser.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -45,6 +48,12 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="CsvParser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvParser.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="csv.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
@@ -70,6 +79,12 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="CsvParser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvParser.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="csv.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=templateproject
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/templateproject
+CND_ARTIFACT_NAME_Debug=conceptsofprogramdesign
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/conceptsofprogramdesign
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=templateproject.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/templateproject.tar
+CND_PACKAGE_NAME_Debug=conceptsofprogramdesign.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/conceptsofprogramdesign.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=templateproject
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/templateproject
+CND_ARTIFACT_NAME_Release=conceptsofprogramdesign
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/conceptsofprogramdesign
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=templateproject.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/templateproject.tar
+CND_PACKAGE_NAME_Release=conceptsofprogramdesign.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/conceptsofprogramdesign.tar
 #
 # include compiler specific variables
 #
