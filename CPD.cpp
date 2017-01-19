@@ -25,19 +25,17 @@ public:
 //primary template to read int from character array
 template< int DIM, typename T> class CharToInt
 {
-private:
-	char * next = Str + 1;
 public:
-	static int result(T* a) {
-		return Pow10<DIM - 1>::result * (*a - 48) + CharToInt<DIM - 1, T>::result(a + 1);
+	static int result(T* ptr) {
+		return Pow10<DIM - 1>::result * (*ptr - 48) + CharToInt<DIM - 1, T>::result(ptr + 1);
 	}
 };
 //specialization template
 template<typename T> class CharToInt<1, T >
 {
 public:
-	static int result(T* a) {
-		return *a - 48;
+	static int result(T* ptr) {
+		return *ptr - 48;
 	}
 };
 //(helper) template to define convenience function "ParseInt"
@@ -158,6 +156,8 @@ int main() {
 	chars[1] = '2';
 	int m = ParseInt<2>(chars);
 	cout << to_string(m) << endl;  //prints integer 'm' parsed from  'chars'
+	
+	//problem: lenght of character array needs to be hard-coded
 
 
 	cout << endl;
