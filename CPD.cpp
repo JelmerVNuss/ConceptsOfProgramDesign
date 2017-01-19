@@ -9,11 +9,48 @@
 
 using namespace std;
 
+//primary template to calculate powers of 10 in compile time
+template<int N>  class Pow10
+{
+public:
+	enum { result = 10 * Pow10<N - 1>::result };
+};
+//specialization template
+template<> class Pow10<0>
+{
+public:
+	enum { result = 1 };
+};
+
+//primary template to read int from character array
+template< int DIM, typename T> class CharToInt
+{
+public:
+	static int result(T* ptr) {
+		return Pow10<DIM - 1>::result * (*ptr - 48) + CharToInt<DIM - 1, T>::result(ptr + 1);
+	}
+};
+//specialization template
+template<typename T> class CharToInt<1, T >
+{
+public:
+	static int result(T* ptr) {
+		return *ptr - 48;
+	}
+};
+//(helper) template to define convenience function "ParseInt"
+template <int DIM, typename T>
+inline T ParseInt(T* a)
+{
+	return CharToInt<DIM, T>::result(a);
+}
+
+//base class to define gerneral items
 class Item
 {
 
 };
-
+//template class to define items of type T
 template<typename T>
 class DeducedItem : public Item {
 public:
@@ -26,13 +63,13 @@ public:
 	T var;
 };
 
-
+//get the value of an item
 template<typename T>
 T getValue(Item* ptr)
 {
 	return *(T*)ptr;
 }
-
+//update the value of an item
 template<typename T>
 void update(Item* ptr, T value)
 {
@@ -86,6 +123,7 @@ void printItems(Item* items[5][3], string types[5][3])
 	}
 }
 
+
 void readItems(Item* items[5][3], string types[5][3], string CSV[5][3])
 {
 	for (int j = 0; j < 5; j++)
@@ -95,6 +133,7 @@ void readItems(Item* items[5][3], string types[5][3], string CSV[5][3])
 			string current = CSV[j][i];
 			if (IsInt(current))
 			{
+				//here is where templates are instantiated
 				items[j][i] = new DeducedItem<int>(stol(current));
 				types[j][i] = "integer";
 			}
@@ -109,6 +148,21 @@ void readItems(Item* items[5][3], string types[5][3], string CSV[5][3])
 
 int main() {
 
+	int n = Pow10<4>::result;
+	cout << to_string(n) << endl; 	//prints 10^4
+
+	char chars[2];
+	chars[0] = '1';
+	chars[1] = '2';
+	int m = ParseInt<2>(chars);
+	cout << to_string(m) << endl;  //prints integer 'm' parsed from  'chars'
+	
+	//problem: lenght of character array needs to be hard-coded
+
+
+	cout << endl;
+
+	//how to get the 'lenght' of an element in a CSV file during compile time?
 	string voorbeeldCSV[5][3] = { {"Robin", "1", "2"},
 								{"Jelmer", "3", "Random string"},
 								{"Michiel", "410", "1230"},

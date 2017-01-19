@@ -34,3 +34,7 @@
 /ipch/CONCEPTSOFPROGRAMDESIGN-268f0f1d
 /ConceptsOfProgramDesign.VC.db
 /ConceptsOfProgramDesign.VC.VC.opendb
+
+# folders
+dist/*
+build/*
