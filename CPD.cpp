@@ -172,13 +172,6 @@ void readItems(Item* items[5][3], string types[5][3], string CSV[5][3])
 */
 
 
-template< size_t N >
-constexpr size_t length(char const (&)[N])
-{
-	return N;
-};
-
-
 
 static constexpr str_const voorbeeldCSV[5][3] = { { "Robin", "1", "2" },
 											{ "Jelmer", "3", "Random string" },
