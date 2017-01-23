@@ -4,17 +4,24 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>CsvCollumn.hpp</itemPath>
+      <itemPath>CsvFile.hpp</itemPath>
       <itemPath>CsvParser.hpp</itemPath>
+      <itemPath>CsvTraits.h</itemPath>
+      <itemPath>CsvTraits.hpp</itemPath>
+      <itemPath>TestCsv.hpp</itemPath>
       <itemPath>csv.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <itemPath>test.csv</itemPath>
+      <itemPath>TestCsv.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>CsvCollumn.cpp</itemPath>
+      <itemPath>CsvFile.cpp</itemPath>
       <itemPath>CsvParser.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -34,7 +41,7 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -48,15 +55,29 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="CsvCollumn.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvCollumn.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CsvFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvFile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CsvParser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CsvParser.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CsvTraits.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CsvTraits.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestCsv.csv" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestCsv.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="csv.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="test.csv" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -79,15 +100,29 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="CsvCollumn.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvCollumn.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CsvFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CsvFile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CsvParser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CsvParser.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CsvTraits.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CsvTraits.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestCsv.csv" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestCsv.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="csv.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="test.csv" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -1,8 +1,16 @@
-/* This file is generated from test.csv */
+/* This file is generated from TestCsv.csv */
 
 #ifndef CSV_HPP
 #define CSV_HPP
 
-typedef Lst<Lst<Char<'d'>, Lst<Char<'i'>, Lst<Char<'t'> > > >, Lst<Lst<Char<'i'>, Lst<Char<'s'> > >, Lst<Lst<Char<'e'>, Lst<Char<'e'>, Lst<Char<'n'> > > >, Lst<Lst<Char<'t'>, Lst<Char<'e'>, Lst<Char<'s'>, Lst<Char<'t'> > > > >, Lst<Lst<Char<'1'> >, Lst<Lst<Char<'2'> >, Lst<Lst<Char<'3'> > > > > > > > > Fields; 
+#include "CsvCollumn.hpp"
+
+using namespace std;
+
+struct TestCsv {
+	static const CsvCollumn<int> kolom1() { return CsvCollumn<int>("kolom1", 0, ';');}
+	static const CsvCollumn<string> kolom2() { return CsvCollumn<string>("kolom2", 1, ';');}
+	static const CsvCollumn<int> kolom3() { return CsvCollumn<int>("kolom3", 2, ';');}
+};
 
 #endif /* CSV_HPP */

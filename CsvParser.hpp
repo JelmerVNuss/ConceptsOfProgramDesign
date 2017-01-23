@@ -33,6 +33,13 @@ template <typename H, typename T=NIL> struct Lst {
 template <char N> struct Char{ static const char result = N; };
 /***************/
 
+/* Print words 
+template <typename LST> 
+struct NthChar {
+    static const Char result = typename LST::Head::result;
+};
+/***************/
+
 /* Basic List operations */
 template <typename LST> struct Length {
     static const unsigned int result = 1 + Length< typename LST::Tail >::result;
@@ -41,12 +48,32 @@ template <typename LST> struct Length {
 template <> struct Length<NIL> {
     static const unsigned int result = 0;
 };
-/*************************/
 
 /* Equality operator */
 template <class X, class Y> struct Eq { static const bool result = false; };
 template <class X> struct Eq<X, X> { static const bool result = true; };
 /*********************/
+
+/*template <char a, char b> struct CEQ {
+    static const bool result = a == b;
+};
+
+template <typename LST, const char* arr> struct Equals {
+    static const bool result = CEQ<*arr, *arr >::result;
+};
+
+template <> struct Equals<NIL, const char*> {
+    static const bool result = true;
+};
+/*************************/
+/*
+template<char a> struct IsNullTerminator {
+    static const bool result = a == '\0';
+};
+
+template<const char* a> struct C_String_Length {
+    static const unsigned int result = 1 + IsNullTerminator<*a>::result ? 0 : C_String_Length<a + 1>::result;
+};
 
 /* Find position in list */
 template <class Elm, class LST> struct Position {
@@ -70,7 +97,7 @@ template <typename LST, int N> struct Nth {
 };
  
 template <typename LST> struct Nth<LST, 0> {
-    typedef typename LST::head result;
+    typedef typename LST::Head result;
 };
 /*******************/
 
@@ -81,13 +108,25 @@ public:
     CsvParser(const CsvParser& orig);
     virtual ~CsvParser();
     
-    void ParseToTemplate(const char* csv_path, const char* template_file, char seperator = ';');
+    //template <typename T, typename ...ARGS>
+    void ParseToTemplate(const char* csv_path, char seperator);
 private:
     std::vector<std::string> split_line(std::string const& line, char seperator);
     std::string parse_to_template(const std::vector<std::string>& fields);
     std::string rec_parse_field(std::string field);
     std::string rec_parse_list(const std::vector<std::string>& list);
 };
+
+
+template <char... letters>
+struct string_t{
+    static char const * c_str() {
+        static constexpr char string[]={letters...,'\0'};
+        return string;
+    }
+};
+
+
 
 #endif /* CSVPARSER_HPP */
 

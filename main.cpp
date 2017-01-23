@@ -2,6 +2,7 @@
 
 #include <bits/c++config.h>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <type_traits>
 #include <string>
@@ -11,7 +12,7 @@
 #include <boost/algorithm/string.hpp>
 
 #include "CsvParser.hpp"
-#include "csv.hpp"
+#include "TestCsv.hpp"
 
 template <std::size_t I = 0, typename Iterator, typename ...Ts>
 inline typename std::enable_if< I == sizeof...(Ts), void>::type
@@ -36,6 +37,9 @@ class IfThenElse<true, Ta, Tb> {
         typedef Ta Result;
 };
 
+
+    constexpr char test[] = "Test";
+    
 int main(int argc, char *argv[])
 {
 //	std::string sample = "first,second,3,4,5.01,sei";
@@ -57,11 +61,16 @@ int main(int argc, char *argv[])
 ////            ++i;
 ////        };
 //	std::cout << (std::get<2>(values) * 5) << std::endl;
-        
+#define _PARSEA
 #ifdef _PARSE
     CsvParser parser;
-    parser.ParseToTemplate("test.csv", "csv.hpp", ';');
+    parser.ParseToTemplate("TestCsv.csv", ';');
     exit(0);
+#else
+    std::ifstream stream ("TestCsv.csv");
+    std::cout << TestCsv::kolom2().Get(2, stream);
+    //std::cout << "Length: " << Length<Fields>::result << " first of first: ";
 #endif /* PARSE */
-    std::cout << "Length: " << Length<Fields>::result << " first of first: ";
+
+
 }

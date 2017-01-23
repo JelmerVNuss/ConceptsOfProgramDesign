@@ -27,16 +27,21 @@ CsvParser::CsvParser(const CsvParser& orig) {
 CsvParser::~CsvParser() {
 }
 
-void CsvParser::ParseToTemplate(const char* csv_path, const char* template_file, char seperator)
+void CsvParser::ParseToTemplate(const char* csv_path, char seperator)
 {
+    std::string filename;
     std::string line;
     std::ifstream myfile (csv_path);
     std::ofstream output;
     std::string template_list = "";
+    std::vector<std::string> fields;
+    std::vector<std::string> types;
     if (myfile.is_open())
     {
         getline(myfile, line);
-        std::vector<std::string> fields = split_line(line, seperator);
+        fields  = split_line(line, seperator);
+        getline(myfile, line);
+        types = split_line(line, seperator);
         template_list = parse_to_template(fields);
         //std::cout << template_list;
 //        while ( getline (myfile,line) )
@@ -46,16 +51,23 @@ void CsvParser::ParseToTemplate(const char* csv_path, const char* template_file,
         myfile.close();
     }
     
+    filename = split_line(csv_path, '.')[0];
+    
     std::stringstream file;
     file << "/* This file is generated from " << csv_path << " */\n\n";
-    file << "#ifndef CSV_HPP\n#define CSV_HPP\n\n";
+    file << "#ifndef CSV_HPP\n#define CSV_HPP\n\n#include \"CsvCollumn.hpp\"\n\nusing namespace std;\n\n";
     //file << "struct NIL {\n\ttypedef NIL Head;\n\ttypedef NIL Tail;\n};\n\n";
     //file << "template <typename H, typename T=NIL> struct Lst {\n\ttypedef H Head;\n\ttypedef T Tail;\n};\n\n";
     //file << "template <char N> struct Char{ static const char result = N; };\n\n";
-    file << "typedef " << template_list << " Fields; \n\n";
+    file << "struct " << filename << " {\n";
+    for(int i = 0; i < fields.size(); ++i)
+        file << "\tstatic CsvCollumn<" << types[i] << "> " << fields[i] << "() { return CsvCollumn<" << types[i] << ">(\"" << fields[i] << "\", "<< i << ", '" << seperator << "');}\n";
+    file << "};\n\n";
+    //file << "typedef " << template_list << " Fields; \n\n";
     file << "#endif /* CSV_HPP */";
     
-    output.open(template_file, std::ios::out | std::ios::trunc);
+    filename.append(".hpp");
+    output.open(filename, std::ios::out | std::ios::trunc);
     output << file.str();
     output.close();
     

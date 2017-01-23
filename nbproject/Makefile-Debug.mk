@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/CsvCollumn.o \
+	${OBJECTDIR}/CsvFile.o \
 	${OBJECTDIR}/CsvParser.o \
 	${OBJECTDIR}/main.o
 
@@ -62,6 +64,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conceptsofprogramdesign: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conceptsofprogramdesign ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/CsvCollumn.o: CsvCollumn.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CsvCollumn.o CsvCollumn.cpp
+
+${OBJECTDIR}/CsvFile.o: CsvFile.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CsvFile.o CsvFile.cpp
 
 ${OBJECTDIR}/CsvParser.o: CsvParser.cpp
 	${MKDIR} -p ${OBJECTDIR}
