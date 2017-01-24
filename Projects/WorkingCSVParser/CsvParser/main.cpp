@@ -10,14 +10,15 @@
 using namespace boost::tuples;
 typedef tuple<int, std::string, std::string> record;
 
-void myFunc(int &total, const record& value){
+void doSomethingWithEachRow(int &total, const record& value){
     //Access each column by their corresponding index.
     total += boost::tuples::get<0>(value);
-    std::cout << boost::tuples::get<1>(value) << std::endl;
+    std::cout << "First name: " << boost::tuples::get<1>(value) << std::endl;
 }
 
 int main(int argc, const char *argv[])
 {
+    //Arbitrary CSV file
     std::ifstream ifs("test.csv");
     csv::iterator<record> it(ifs);
     
@@ -25,10 +26,10 @@ int main(int argc, const char *argv[])
     //Iterate through all rows.
     std::for_each(it, csv::iterator<record>(), [&total](const record& rec){
         //Call myFunc for every row in the CSV.
-        myFunc(total, rec);
+        doSomethingWithEachRow(total, rec);
     });
     
-    std::cout << "Total id's: " << total << std::endl;
+    std::cout << "Total numbers: " << total << std::endl;
     
     return 0;
 }

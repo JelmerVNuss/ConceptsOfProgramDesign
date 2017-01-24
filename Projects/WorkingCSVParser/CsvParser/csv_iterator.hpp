@@ -1,6 +1,3 @@
-#ifndef _CSV_ITERATOR_HPP_
-#define _CSV_ITERATOR_HPP_
-
 #include <string>
 #include <iostream>
 #include <istream>
@@ -20,37 +17,39 @@ namespace csv {
                 bool isCurrValid; // Marks that currentResult is no longer valid
                 Tuple currentResult; // Useful for passing pointers around
             public:
+                
                 /**
                  * Constructor denoting end of range
                  */
-                iterator() : isBadFormat(true),isCurrValid(true) {
+                iterator() : isBadFormat(true),isCurrValid(true) 
+                {
                 }
 
-                iterator(std::istream& in)
-                    : isBadFormat(false), inputStream(&in),isCurrValid(true) 
+                iterator(std::istream& in) : isBadFormat(false), inputStream(&in),isCurrValid(true) 
                 {
+                    //Read the headers (names of the columns).
+                    std::string headers;
+                    std::getline(*inputStream, headers);
                     this->operator++();
                 }
 
-                Tuple const* operator->(){
-                    if(isCurrValid){
-                        this->operator*();
-                    }
-                    return &currentResult;
-                }
-
-                Tuple operator*() throw (boost::bad_lexical_cast,std::out_of_range) {
-                    if(isCurrValid){
-                        try {
+                Tuple operator*() throw (boost::bad_lexical_cast, std::out_of_range) 
+                {
+                    if(isCurrValid)
+                    {
+                        try 
+                        {
                             using namespace boost;
                             typedef tokenizer<escaped_list_separator<char> > Tokens;
                             Tokens tokens(currentLine);
                             filler<Tuple>::fill(currentResult,tokens.begin(),tokens.end());
-                        } catch (boost::bad_lexical_cast& ex){
-                            //Catch cast exception.
+                        } catch (boost::bad_lexical_cast& ex)
+                        {
+                            // Catch cast exception.
                             isBadFormat = true;
                             throw(ex);
-                        } catch (std::out_of_range& ex){
+                        } catch (std::out_of_range& ex)
+                        {
                             // Exception when not enough columns in the record
                             isBadFormat = true;
                             throw(ex);
@@ -62,7 +61,7 @@ namespace csv {
                 }
 
                 bool operator==(const iterator& other) {
-                    return (isBadFormat == true) &&  (other.isBadFormat == true);
+                    return (isBadFormat) && other.isBadFormat;
                 }
 
                 bool operator!=(const iterator& other) {
@@ -77,6 +76,3 @@ namespace csv {
                 }
         };
 };
-
-
-#endif
