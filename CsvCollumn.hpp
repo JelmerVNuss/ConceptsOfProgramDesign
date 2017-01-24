@@ -30,16 +30,12 @@ public:
     CsvCollumn(const CsvCollumn& orig);
     virtual ~CsvCollumn();
     
-    inline typename CsvTraits<T>::Type Get(const unsigned int& row_number, std::ifstream& stream);
+    T Get(const unsigned int& row_number, std::ifstream& stream);
 private:
-    inline typename CsvTraits<T>::Type _get(const std::string& value);
-    
+    T _get(const std::string& value);
     std::vector<std::string> split(const std::string& value);
-    
     std::string name;
-    
     int number;
-    
     char delimiter;
 };
 
@@ -57,7 +53,7 @@ CsvCollumn<T>::~CsvCollumn() {
 }
 
 template<typename T>
-inline typename CsvTraits<T>::Type CsvCollumn<T>::Get(const unsigned int& row_number, std::ifstream& stream)
+T CsvCollumn<T>::Get(const unsigned int& row_number, std::ifstream& stream)
 {
     //TODO: Logic to read from file
     std::string value = "";  
@@ -73,7 +69,7 @@ inline typename CsvTraits<T>::Type CsvCollumn<T>::Get(const unsigned int& row_nu
 
 
 template<>
-inline typename CsvTraits<int>::Type CsvCollumn<int>::_get(const std::string& value)
+int CsvCollumn<int>::_get(const std::string& value)
 {
     try {
         return std::stoi(value);
@@ -84,13 +80,13 @@ inline typename CsvTraits<int>::Type CsvCollumn<int>::_get(const std::string& va
 }
 
 template<>
-inline typename CsvTraits<double>::Type CsvCollumn<double>::_get(const std::string& value)
+double CsvCollumn<double>::_get(const std::string& value)
 {
     return std::stod(value);
 }
 
 template<>
-inline typename CsvTraits<std::string>::Type CsvCollumn<std::string>::_get(const std::string& value)
+std::string CsvCollumn<std::string>::_get(const std::string& value)
 {
     return value;
 }
