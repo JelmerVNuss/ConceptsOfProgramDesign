@@ -84,9 +84,9 @@ static void printItems(Item* items[LY][LX], string types[LY][LX])
 
 static void readItems(Item* items[LY][LX], string types[LY][LX], const string CSV[LY][LX])
 {
-    for (int j = 0; j < 5; j++)
+    for (int j = 0; j < LY; j++)
     {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < LX; i++)
 	{
             string current = CSV[j][i];
             if (IsInt(current))
