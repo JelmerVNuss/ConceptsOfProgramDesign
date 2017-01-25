@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   main.cpp
- * Author: PC
- *
- * Created on 25 januari 2017, 13:30
- */
-
 #include <cstdlib>
 #include "items.h"
 #include "CSVExample.h"
@@ -48,7 +35,7 @@ int main(int argc, char** argv) {
     printItems(items, types);
     
     AddColumn<int>(items, 1, 2);
-    cout << "Added 2nd column to 3rd column " << endl;
+    cout << endl << "Added 2nd column to 3rd column " << endl;
        
     cout << endl << "Printing items:" << endl << endl;
     printItems(items, types);
