@@ -8,7 +8,6 @@
 #include <string>
 #include <tuple>
 
-#include "CsvParser.hpp"
 #include "TestCsv.hpp"
 
 int main(int argc, char *argv[])
@@ -27,11 +26,11 @@ int main(int argc, char *argv[])
     /*
      * And if we do not pass that argument, we can make use of the generated code.
      */
-    std::ifstream stream ("TestCsv.csv");
+    const char* file_name = "TestCsv.csv";
     // Print the ID (first column) of row 2
-    std::cout << TestCsv::id().Get(2, stream) << std::endl;
+    std::cout << TestCsv::id().Get(1, file_name) << std::endl;
     
     // Print the name (column 2) of row 3
-    std::cout << TestCsv::name().Get(3, stream) << std::endl;
+    std::cout << TestCsv::name().Get(2, file_name) << std::endl;
 #endif /* PARSE */
 }

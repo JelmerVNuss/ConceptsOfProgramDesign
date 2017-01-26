@@ -1,4 +1,7 @@
-kolom1;kolom2;kolom3
+id;name;additional
 int;string;int
-1;bla;5
-2;blabla;10
+1;Michiel;5
+2;Thomas;10
+3;Hugo;20
+4;Robin;40
+5;Jelmer;80

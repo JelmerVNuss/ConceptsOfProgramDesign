@@ -14,3 +14,25 @@
 
 #include "CsvCollumn.hpp"
 
+template<>
+int CsvCollumn<int>::_get(const std::string& value)
+{
+    try {
+        return std::stoi(value);
+    } catch(std::invalid_argument ex) {
+        std::cout << "Invalid arg error: " << value << " " << ex.what() << std::endl;
+    }
+    return 0;
+}
+
+template<>
+double CsvCollumn<double>::_get(const std::string& value)
+{
+    return std::stod(value);
+}
+
+template<>
+std::string CsvCollumn<std::string>::_get(const std::string& value)
+{
+    return value;
+}

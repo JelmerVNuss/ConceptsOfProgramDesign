@@ -11,16 +11,19 @@
  * Created on 22 januari 2017, 16:10
  */
 
-#ifndef CSVCOLLUMN_HPP
-#define CSVCOLLUMN_HPP
 
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stdexcept>
 #include <cstring>
 #include "CsvTraits.hpp"
 
+
+#ifndef CSVCOLLUMN_HPP
+#define CSVCOLLUMN_HPP
 
 /*
  * CsvCollumn is the generic class that can be used for each column in a CSV file.
@@ -40,7 +43,7 @@ public:
     /// \param row_number Which row number you want the value from
     /// \param stream The filestream to read from
     /// \return the parsed value of type T from row row_number, from the filestream.
-    T Get(const unsigned int& row_number, std::ifstream& stream);
+    T Get(const unsigned int& row_number, const char* file_name);
 private:
     /// The function that actually parses. Uses template parameter specialization
     /// to choose the right type to parse the value to and to return
@@ -67,8 +70,10 @@ CsvCollumn<T>::~CsvCollumn() {
 }
 
 template<typename T>
-T CsvCollumn<T>::Get(const unsigned int& row_number, std::ifstream& stream)
+T CsvCollumn<T>::Get(const unsigned int& row_number, const char* file_name)
 {
+    std::ifstream stream (file_name);
+    
     std::string value = "";  
     std::getline(stream, value);
     std::getline(stream, value);
@@ -81,28 +86,7 @@ T CsvCollumn<T>::Get(const unsigned int& row_number, std::ifstream& stream)
 }
 
 
-template<>
-int CsvCollumn<int>::_get(const std::string& value)
-{
-    try {
-        return std::stoi(value);
-    } catch(std::invalid_argument ex) {
-        std::cout << "Invalid arg error: " << value << " " << ex.what() << std::endl;
-    }
-    return 0;
-}
 
-template<>
-double CsvCollumn<double>::_get(const std::string& value)
-{
-    return std::stod(value);
-}
-
-template<>
-std::string CsvCollumn<std::string>::_get(const std::string& value)
-{
-    return value;
-}
 template<typename T>
 std::vector<std::string> CsvCollumn<T>::split(const std::string& value)
 {

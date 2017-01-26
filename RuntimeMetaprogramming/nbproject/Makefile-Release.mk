@@ -36,7 +36,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/CsvCollumn.o \
-	${OBJECTDIR}/CsvFile.o \
 	${OBJECTDIR}/CsvParser.o \
 	${OBJECTDIR}/main.o
 
@@ -59,21 +58,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conceptsofprogramdesign
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/runtimemetaprogramming
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conceptsofprogramdesign: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/runtimemetaprogramming: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conceptsofprogramdesign ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/runtimemetaprogramming ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/CsvCollumn.o: CsvCollumn.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CsvCollumn.o CsvCollumn.cpp
-
-${OBJECTDIR}/CsvFile.o: CsvFile.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CsvFile.o CsvFile.cpp
 
 ${OBJECTDIR}/CsvParser.o: CsvParser.cpp
 	${MKDIR} -p ${OBJECTDIR}
