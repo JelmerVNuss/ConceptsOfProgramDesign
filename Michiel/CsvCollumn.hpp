@@ -22,7 +22,13 @@
 #include "CsvTraits.hpp"
 
 
-
+/*
+ * CsvCollumn is the generic class that can be used for each column in a CSV file.
+ * It takes a template type parameter to define what type the Get function should return
+ * And thus, what type it should parse the string from the CSV file from.
+ * Since it is template code, as in, the code should be generated for each type we wish it to work for,
+ * The definition AND the declaration of the functions is done in this header file.
+ */
 template <typename T>
 class CsvCollumn {
 public:
@@ -30,8 +36,16 @@ public:
     CsvCollumn(const CsvCollumn& orig);
     virtual ~CsvCollumn();
     
+    /// The generic Get function which can be called for every kind of column.
+    /// \param row_number Which row number you want the value from
+    /// \param stream The filestream to read from
+    /// \return the parsed value of type T from row row_number, from the filestream.
     T Get(const unsigned int& row_number, std::ifstream& stream);
 private:
+    /// The function that actually parses. Uses template parameter specialization
+    /// to choose the right type to parse the value to and to return
+    /// \param value as string that needs to be parsed to type T
+    /// \return the parsed value of type T
     T _get(const std::string& value);
     std::vector<std::string> split(const std::string& value);
     std::string name;
@@ -55,7 +69,6 @@ CsvCollumn<T>::~CsvCollumn() {
 template<typename T>
 T CsvCollumn<T>::Get(const unsigned int& row_number, std::ifstream& stream)
 {
-    //TODO: Logic to read from file
     std::string value = "";  
     std::getline(stream, value);
     std::getline(stream, value);
@@ -98,7 +111,6 @@ std::vector<std::string> CsvCollumn<T>::split(const std::string& value)
     std::vector<std::string> elems;
     while (std::getline(ss, item, delimiter)) {
         elems.push_back(item);
-        // elems.push_back(std::move(item)); // if C++11 (based on comment from @mchiasson)
     }
     return elems;
 }
