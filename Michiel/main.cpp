@@ -34,7 +34,4 @@ int main(int argc, char *argv[])
     // Print the name (column 2) of row 3
     std::cout << TestCsv::name().Get(3, stream) << std::endl;
 #endif /* PARSE */
-
-
-}
 }
