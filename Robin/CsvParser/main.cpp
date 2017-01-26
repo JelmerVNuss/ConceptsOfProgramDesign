@@ -1,9 +1,15 @@
-#include "csv_iterator.hpp"
+/* 
+ * File:    main.hpp
+ * Author:  Robin
+ * Summary: The main class which shows an example of how to use the CSV-parser.
+ */
+
+
+#include "CsvIterator.hpp"
 #include <iostream>
 #include <fstream>
-#include <boost/tuple/tuple.hpp>
 
-// Compressed streams
+#include <boost/tuple/tuple.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 
@@ -11,7 +17,7 @@ using namespace boost::tuples;
 typedef tuple<int, std::string, std::string> record;
 
 void doSomethingWithEachRow(int &total, const record& value){
-    //Access each column by their corresponding index.
+    //Access each column by their corresponding index (0 in this case).
     total += boost::tuples::get<0>(value);
     std::cout << "First name: " << boost::tuples::get<1>(value) << std::endl;
 }

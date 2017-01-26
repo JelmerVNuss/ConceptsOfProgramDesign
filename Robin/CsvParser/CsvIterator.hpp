@@ -1,11 +1,21 @@
+/* 
+ * File:    CsvIterator.hpp
+ * Author:  Robin
+ * Summary: This class is responsible for iterating through the given istream.
+ *          It will use the CSVHelper to do the actual casting to the types
+ *          in the given tuple. Each line of the CSV-file is tokenized by using
+ *          Boost's tokenizer, which represent the fields in a row in a CSV-File.
+ */
+
 #include <string>
 #include <iostream>
 #include <istream>
 #include <stdexcept>
+#include "CsvHelper.hpp"
+
 #include <boost/tuple/tuple.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/tokenizer.hpp>
-#include "csv_helpers.hpp"
 
 namespace csv {
     template<class Tuple>

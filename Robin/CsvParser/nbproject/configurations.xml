@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>csv_helpers.hpp</itemPath>
-      <itemPath>csv_iterator.hpp</itemPath>
+      <itemPath>CsvHelper.hpp</itemPath>
+      <itemPath>CsvIterator.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -44,9 +44,9 @@
           </incDir>
         </ccTool>
       </compileType>
-      <item path="csv_helpers.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CsvHelper.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CsvIterator.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -71,9 +71,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="csv_helpers.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CsvHelper.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="csv_iterator.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CsvIterator.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
