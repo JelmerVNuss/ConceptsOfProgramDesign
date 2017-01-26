@@ -33,3 +33,14 @@ struct TestCsv {
 
 This is generated using strings and file input and output during runtime.
 But while this is not template metaprogramming, it does provide the user with actual type information and compile-time typechecking.
+
+The program will do this parsing when calling the CsvParser to parse with a filename.
+
+```cpp
+#ifdef _PARSE
+    CsvParser parser;
+    parser.ParseToTemplate("TestCsv.csv", ';');
+    exit(0);
+#else
+```
+
