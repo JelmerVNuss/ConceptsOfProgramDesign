@@ -17,6 +17,14 @@
 #include <string>
 #include <vector>
 
+/*
+ * From here untill class definition: unused old template code.
+ * Actual code begins on line 96.
+ * 
+ * The template codes following, untill the class, are largely from
+ * https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming/
+ */
+
 /* Define List */
 struct NIL {
 	typedef NIL Head;
@@ -33,6 +41,8 @@ template <typename H, typename T=NIL> struct Lst {
 template <char N> struct Char{ static const char result = N; };
 /***************/
 
+typedef Lst<Char<'a'>, Lst<Char<'b'> > > List;
+
 /* Print words 
 template <typename LST> 
 struct NthChar {
@@ -48,18 +58,19 @@ template <typename LST> struct Length {
 template <> struct Length<NIL> {
     static const unsigned int result = 0;
 };
+/*************************/
 
 /* Equality operator */
 template <class X, class Y> struct Eq { static const bool result = false; };
 template <class X> struct Eq<X, X> { static const bool result = true; };
 /*********************/
-
-/*template <char a, char b> struct CEQ {
+/*
+template <char a, char b> struct CEQ {
     static const bool result = a == b;
 };
 
 template <typename LST, const char* arr> struct Equals {
-    static const bool result = CEQ<*arr, *arr >::result;
+    static const bool result = CEQ<LST::Head::result, *arr >::result && Equals<Lst::Tail, (const char*)arr+1 >::result;
 };
 
 template <> struct Equals<NIL, const char*> {
@@ -75,21 +86,6 @@ template<const char* a> struct C_String_Length {
     static const unsigned int result = 1 + IsNullTerminator<*a>::result ? 0 : C_String_Length<a + 1>::result;
 };
 
-/* Find position in list */
-template <class Elm, class LST> struct Position {
-    private:
-    typedef typename LST::head H;
-    typedef typename LST::tail T;
-    static const bool found = Eq<H, Elm>::result;
-    public:
-    static const int result = found? 1 : 1 + Position<Elm, T>::result;
-};
- 
-template <class Elm> struct Position<Elm, NIL> {
-    static const int result = 0;
-};
-/*************************/
-
 /* Get Nth in list */
 template <typename LST, int N> struct Nth {
     typedef typename LST::Tail Tail;
@@ -101,32 +97,29 @@ template <typename LST> struct Nth<LST, 0> {
 };
 /*******************/
 
+/* Actual code begins here */
+
+/*
+ * Simple class that reads a CSV files header and second line (for types)
+ * and generates C++ code.
+ */
 class CsvParser {
 public:
-    
     CsvParser();
     CsvParser(const CsvParser& orig);
     virtual ~CsvParser();
     
-    //template <typename T, typename ...ARGS>
     void ParseToTemplate(const char* csv_path, char seperator);
 private:
     std::vector<std::string> split_line(std::string const& line, char seperator);
+    
+    /*
+     * The following functions were used to generate template-ready lists of characters.
+     */
     std::string parse_to_template(const std::vector<std::string>& fields);
     std::string rec_parse_field(std::string field);
     std::string rec_parse_list(const std::vector<std::string>& list);
 };
-
-
-template <char... letters>
-struct string_t{
-    static char const * c_str() {
-        static constexpr char string[]={letters...,'\0'};
-        return string;
-    }
-};
-
-
 
 #endif /* CSVPARSER_HPP */
 
