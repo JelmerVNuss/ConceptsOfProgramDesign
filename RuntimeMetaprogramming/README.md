@@ -44,3 +44,4 @@ The program will do this parsing when calling the CsvParser to parse with a file
 #else
 ```
 
+The CsvParser class also contains some old code that might be interesting that generates template-metaprogramming-friendly lists of characters.
